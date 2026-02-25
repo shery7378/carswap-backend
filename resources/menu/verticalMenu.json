@@ -1,0 +1,120 @@
+{
+  "menu": [
+    {
+      "url": "/",
+      "name": "Dashboard",
+      "icon": "menu-icon icon-base bx bx-home-smile",
+      "slug": "app-ecommerce-dashboard"
+    },
+    {
+      "name": "Products",
+      "icon": "menu-icon icon-base bx bx-package",
+      "slug": "app-ecommerce-products",
+      "submenu": [
+        {
+          "url": "app/ecommerce/products/product-list",
+          "name": "Product List",
+          "slug": "app-ecommerce-product-list"
+        },
+        {
+          "url": "app/ecommerce/products/add-product",
+          "name": "Add Product",
+          "slug": "app-ecommerce-add-product"
+        },
+        {
+          "url": "app/ecommerce/products/category-list",
+          "name": "Category List",
+          "slug": "app-ecommerce-category-list"
+        }
+      ]
+    },
+    {
+      "url": "app/ecommerce/order",
+      "name": "Order",
+      "icon": "menu-icon icon-base bx bx-shopping-bag",
+      "slug": "app-ecommerce-order"
+    },
+    {
+      "url": "app/ecommerce/customer",
+      "name": "Customer",
+      "icon": "menu-icon icon-base bx bx-user",
+      "slug": "app-ecommerce-customer"
+    },
+    {
+      "name": "Subscription",
+      "icon": "menu-icon icon-base bx bx-credit-card",
+      "slug": "app-subscription",
+      "submenu": [
+        {
+          "url": "app/subscription/list",
+          "name": "Subscription List",
+          "slug": "app-subscription-list"
+        },
+        {
+          "url": "app/subscription/create",
+          "name": "Create Subscription",
+          "slug": "app-subscription-create"
+        },
+        {
+          "url": "app/subscription/plans",
+          "name": "Subscription Plans",
+          "slug": "app-subscription-plans"
+        },
+        {
+          "url": "app/subscription/payments",
+          "name": "Payment History",
+          "slug": "app-subscription-payments"
+        }
+      ]
+    },
+    {
+      "name": "Settings",
+      "icon": "menu-icon icon-base bx bx-cog",
+      "slug": "app-ecommerce-settings",
+      "submenu": [
+        {
+          "url": "app/ecommerce/settings/general",
+          "name": "General",
+          "slug": "app-ecommerce-settings-general"
+        },
+        {
+          "url": "app/ecommerce/settings/payment",
+          "name": "Payment",
+          "slug": "app-ecommerce-settings-payment"
+        },
+        {
+          "url": "app/ecommerce/settings/shipping",
+          "name": "Shipping",
+          "slug": "app-ecommerce-settings-shipping"
+        },
+        {
+          "url": "app/ecommerce/settings/tax",
+          "name": "Tax",
+          "slug": "app-ecommerce-settings-tax"
+        },
+        {
+          "url": "app/ecommerce/settings/notifications",
+          "name": "Notifications",
+          "slug": "app-ecommerce-settings-notifications"
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "icon": "menu-icon icon-base bx bx-user",
+      "slug": "app-users",
+      "submenu": [
+        {
+          "url": "app/users/list",
+          "name": "List",
+          "slug": "app-users-list"
+        },
+        {
+          "url": "app/users/add",
+          "name": "Add User",
+          "slug": "app-users-add"
+        }
+      ]
+    }
+  ]
+}
