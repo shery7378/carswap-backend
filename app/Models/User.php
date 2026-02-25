@@ -13,9 +13,7 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
+     * Mass assignable attributes
      */
     protected $fillable = [
         'first_name',
@@ -23,16 +21,18 @@ class User extends Authenticatable
         'phone',
         'email',
         'password',
+        'profile_picture',
         'has_whatsapp',
         'has_viber',
+        'facebook',
+        'instagram',
+        'youtube',
         'is_trader',
         'email_verified_at',
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
+     * Hidden attributes
      */
     protected $hidden = [
         'password',
@@ -40,9 +40,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
+     * Attribute casting
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
@@ -51,4 +49,22 @@ class User extends Authenticatable
         'has_viber' => 'boolean',
         'is_trader' => 'boolean',
     ];
+
+    /**
+     * Accessor: Full Name
+     */
+    // public function getFullNameAttribute()
+    // {
+    //     return trim($this->first_name . ' ' . $this->last_name);
+    // }
+
+    // /**
+    //  * Accessor: Profile Picture URL
+    //  */
+    // public function getProfilePictureUrlAttribute()
+    // {
+    //     return $this->profile_picture
+    //         ? asset('storage/' . $this->profile_picture)
+    //         : asset('images/default-avatar.png'); // default avatar
+    // }
 }

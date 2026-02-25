@@ -1,60 +1,61 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\dashboard\Analytics;
-use App\Http\Controllers\layouts\WithoutMenu;
-use App\Http\Controllers\layouts\WithoutNavbar;
-use App\Http\Controllers\layouts\Fluid;
-use App\Http\Controllers\layouts\Container;
-use App\Http\Controllers\Admin\AuthController;
-use App\Http\Controllers\layouts\Blank;
-use App\Http\Controllers\cards\CardBasic;
-use App\Http\Controllers\user_interface\Accordion;
-use App\Http\Controllers\user_interface\Alerts;
-use App\Http\Controllers\user_interface\Badges;
-use App\Http\Controllers\user_interface\Buttons;
-use App\Http\Controllers\user_interface\Carousel;
-use App\Http\Controllers\user_interface\Collapse;
-use App\Http\Controllers\user_interface\Dropdowns;
-use App\Http\Controllers\user_interface\Footer;
-use App\Http\Controllers\user_interface\ListGroups;
-use App\Http\Controllers\user_interface\Modals;
-use App\Http\Controllers\user_interface\Navbar;
-use App\Http\Controllers\user_interface\Offcanvas;
-use App\Http\Controllers\user_interface\PaginationBreadcrumbs;
-use App\Http\Controllers\user_interface\Progress;
-use App\Http\Controllers\user_interface\Spinners;
-use App\Http\Controllers\user_interface\TabsPills;
-use App\Http\Controllers\user_interface\Toasts;
-use App\Http\Controllers\user_interface\TooltipsPopovers;
-use App\Http\Controllers\user_interface\Typography;
-use App\Http\Controllers\extended_ui\PerfectScrollbar;
-use App\Http\Controllers\extended_ui\TextDivider;
-use App\Http\Controllers\icons\Boxicons;
-use App\Http\Controllers\form_elements\BasicInput;
-use App\Http\Controllers\form_elements\InputGroups;
-use App\Http\Controllers\form_layouts\VerticalForm;
-use App\Http\Controllers\form_layouts\HorizontalForm;
-use App\Http\Controllers\tables\Basic as TablesBasic;
-use App\Http\Controllers\ecommerce\ProductList;
-use App\Http\Controllers\ecommerce\AddProduct;
-use App\Http\Controllers\ecommerce\CategoryList;
-use App\Http\Controllers\ecommerce\Order;
-use App\Http\Controllers\ecommerce\Customer;
-use App\Http\Controllers\ecommerce\SettingsGeneral;
-use App\Http\Controllers\ecommerce\SettingsPayment;
-use App\Http\Controllers\ecommerce\SettingsShipping;
-use App\Http\Controllers\ecommerce\SettingsTax;
-use App\Http\Controllers\ecommerce\SettingsNotifications;
-use App\Http\Controllers\subscription\SubscriptionList;
-use App\Http\Controllers\subscription\SubscriptionCreate;
-use App\Http\Controllers\subscription\SubscriptionPlans;
-use App\Http\Controllers\subscription\SubscriptionPayments;
-use App\Http\Controllers\users\UserList;
-use App\Http\Controllers\users\UserAdd;
+// use App\Http\Controllers\dashboard\Analytics;
+// use App\Http\Controllers\layouts\WithoutMenu;
+// use App\Http\Controllers\layouts\WithoutNavbar;
+// use App\Http\Controllers\layouts\Fluid;
+// use App\Http\Controllers\layouts\Container;
+// use App\Http\Controllers\Admin\AuthController;
+// use App\Http\Controllers\layouts\Blank;
+// use App\Http\Controllers\cards\CardBasic;
+// use App\Http\Controllers\user_interface\Accordion;
+// use App\Http\Controllers\user_interface\Alerts;
+// use App\Http\Controllers\user_interface\Badges;
+// use App\Http\Controllers\user_interface\Buttons;
+// use App\Http\Controllers\user_interface\Carousel;
+// use App\Http\Controllers\user_interface\Collapse;
+// use App\Http\Controllers\user_interface\Dropdowns;
+// use App\Http\Controllers\user_interface\Footer;
+// use App\Http\Controllers\user_interface\ListGroups;
+// use App\Http\Controllers\user_interface\Modals;
+// use App\Http\Controllers\user_interface\Navbar;
+// use App\Http\Controllers\user_interface\Offcanvas;
+// use App\Http\Controllers\user_interface\PaginationBreadcrumbs;
+// use App\Http\Controllers\user_interface\Progress;
+// use App\Http\Controllers\user_interface\Spinners;
+// use App\Http\Controllers\user_interface\TabsPills;
+// use App\Http\Controllers\user_interface\Toasts;
+// use App\Http\Controllers\user_interface\TooltipsPopovers;
+// use App\Http\Controllers\user_interface\Typography;
+// use App\Http\Controllers\extended_ui\PerfectScrollbar;
+// use App\Http\Controllers\extended_ui\TextDivider;
+// use App\Http\Controllers\icons\Boxicons;
+// use App\Http\Controllers\form_elements\BasicInput;
+// use App\Http\Controllers\form_elements\InputGroups;
+// use App\Http\Controllers\form_layouts\VerticalForm;
+// use App\Http\Controllers\form_layouts\HorizontalForm;
+// use App\Http\Controllers\tables\Basic as TablesBasic;
+// use App\Http\Controllers\ecommerce\ProductList;
+// use App\Http\Controllers\ecommerce\AddProduct;
+// use App\Http\Controllers\ecommerce\CategoryList;
+// use App\Http\Controllers\ecommerce\Order;
+// use App\Http\Controllers\ecommerce\Customer;
+// use App\Http\Controllers\ecommerce\SettingsGeneral;
+// use App\Http\Controllers\ecommerce\SettingsPayment;
+// use App\Http\Controllers\ecommerce\SettingsShipping;
+// use App\Http\Controllers\ecommerce\SettingsTax;
+// use App\Http\Controllers\ecommerce\SettingsNotifications;
+// use App\Http\Controllers\subscription\SubscriptionList;
+// use App\Http\Controllers\subscription\SubscriptionCreate;
+// use App\Http\Controllers\subscription\SubscriptionPlans;
+// use App\Http\Controllers\subscription\SubscriptionPayments;
+// use App\Http\Controllers\users\User;
+// use App\Http\Controllers\users\UserAdd;
+use App\Http\Controllers\Controller;
+use APP\Http\Controllers\users\User_Controller;
 
-
-// Main Page Route
+// Main Page \Illuminate\Support\Facades\Route
 
 // admin auth
 
@@ -133,6 +134,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/app/subscription/payments', [SubscriptionPayments::class, 'index'])->name('app-subscription-payments');
 
     // users
-    Route::get('/app/users/list', [UserList::class, 'index'])->name('app-users-list');
-    Route::get('/app/users/add', [UserAdd::class, 'index'])->name('app-users-add');
+    Route::get('/app/users/list', [User_Controller::class, 'index'])->name('app-users-list');
+    Route::get('/app/users/view/{id}', [User_Controller::class, 'view'])->name('admin.users.view');
 });
