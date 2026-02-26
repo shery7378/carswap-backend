@@ -35,3 +35,4 @@ Route::post('/profile/update', [RegisterController::class, 'updateProfile'])->mi
 Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetEmail']);
 Route::post('/verify-reset-token', [ForgotPasswordController::class, 'verifyToken']);
 Route::post('/reset-password', [ForgotPasswordController::class, 'resetPassword']);
+
