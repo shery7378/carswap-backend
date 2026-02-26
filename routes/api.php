@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\Auth\RegisterController;
+use App\Http\Controllers\api\Auth\ForgotPasswordController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -29,3 +30,8 @@ Route::middleware('auth:sanctum')->get('/profile', function (Request $request) {
 });
 Route::post('/logout', [RegisterController::class,'logout'])->middleware('auth:sanctum');
 Route::post('/profile/update', [RegisterController::class, 'updateProfile'])->middleware('auth:sanctum');
+
+// Forgot Password Routes
+Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetEmail']);
+Route::post('/verify-reset-token', [ForgotPasswordController::class, 'verifyToken']);
+Route::post('/reset-password', [ForgotPasswordController::class, 'resetPassword']);

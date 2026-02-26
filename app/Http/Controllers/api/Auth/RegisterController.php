@@ -126,18 +126,29 @@ class RegisterController extends Controller
             'last_name' => 'sometimes|required|string|max:191',
             'phone' => 'sometimes|required|string|max:191|unique:users,phone,' . $user->id,
             'email' => 'sometimes|required|email|max:191|unique:users,email,' . $user->id,
-            'password' => ['sometimes', 'confirmed', 'min:6'],
-            'current_password' => 'required_with:password|current_password',
+            'new_password' => ['sometimes', 'confirmed', 'min:6'],
+            'current_password' => 'required_with:new_password|current_password',
             'profile_picture' => 'nullable|image|max:2048',
+            'has_whatsapp' => 'nullable|boolean',
+            'has_viber' => 'nullable|boolean',
+            'is_email_visible' => 'nullable|boolean',
         ]);
 
         if ($request->hasFile('profile_picture')) {
-            $validated['profile_picture'] =
-                $request->file('profile_picture')->store('profiles', 'public');
+            $validated['profile_picture'] = $request->file('profile_picture')->store('profiles', 'public');
         }
 
-        if (!empty($validated['password'])) {
-            $validated['password'] = Hash::make($validated['password']);
+        if (!empty($validated['new_password'])) {
+            $validated['password'] = Hash::make($validated['new_password']);
+            unset($validated['new_password']);
+            unset($validated['new_password_confirmation']);
+        } else {
+            unset($validated['new_password']);
+            unset($validated['new_password_confirmation']);
+        }
+
+        if (isset($validated['current_password'])) {
+            unset($validated['current_password']);
         }
 
         $user->update($validated);
