@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 use App\Models\User;
 use App\Mail\ResetPasswordMail;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 
 class ForgotPasswordController extends Controller
 {
@@ -40,7 +41,16 @@ class ForgotPasswordController extends Controller
 
             // Send email with reset link
             $user = User::where('email', $validated['email'])->first();
-            Mail::to($validated['email'])->send(new ResetPasswordMail($user, $token));
+            
+            try {
+                Mail::to($validated['email'])->send(new ResetPasswordMail($user, $token));
+            } catch (\Exception $mailError) {
+                Log::error('Mail sending error: ' . $mailError->getMessage());
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Email configuration error: ' . $mailError->getMessage(),
+                ], 500);
+            }
 
             return response()->json([
                 'success' => true,
@@ -52,9 +62,10 @@ class ForgotPasswordController extends Controller
                 'errors' => $e->errors(),
             ], 422);
         } catch (\Exception $e) {
+            Log::error('Forgot password error: ' . $e->getMessage());
             return response()->json([
                 'success' => false,
-                'message' => 'An error occurred while sending the reset email.',
+                'message' => 'An error occurred: ' . $e->getMessage(),
             ], 500);
         }
     }
