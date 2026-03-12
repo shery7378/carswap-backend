@@ -6,25 +6,58 @@
       "icon": "menu-icon icon-base bx bx-home-smile",
       "slug": "app-ecommerce-dashboard"
     },
+    
     {
-      "name": "Products",
-      "icon": "menu-icon icon-base bx bx-package",
-      "slug": "app-ecommerce-products",
+      "name": "Vehicles",
+      "icon": "menu-icon icon-base bx bx-car",
+      "slug": "admin-vehicles",
       "submenu": [
         {
-          "url": "app/ecommerce/products/product-list",
-          "name": "Product List",
-          "slug": "app-ecommerce-product-list"
+          "url": "app/vehicles",
+          "name": "Vehicle List",
+          "slug": "admin-vehicles-index"
         },
         {
-          "url": "app/ecommerce/products/add-product",
-          "name": "Add Product",
-          "slug": "app-ecommerce-add-product"
+          "url": "app/vehicles/create",
+          "name": "Add Vehicle",
+          "slug": "admin-vehicles-create"
+        }
+      ]
+    },
+    {
+      "name": "Car Settings",
+      "icon": "menu-icon icon-base bx bx-cog",
+      "slug": "admin-vehicle-settings",
+      "submenu": [
+        {
+          "url": "app/vehicle-settings/brands",
+          "name": "Brands",
+          "slug": "admin-brands"
         },
         {
-          "url": "app/ecommerce/products/category-list",
-          "name": "Category List",
-          "slug": "app-ecommerce-category-list"
+          "url": "app/vehicle-settings/models",
+          "name": "Models",
+          "slug": "admin-models"
+        },
+        {
+          "url": "app/vehicle-settings/fuel-types",
+          "name": "Fuel Types",
+          "slug": "admin-fuel-types"
+        },
+        {
+          "url": "app/vehicle-settings/transmissions",
+          "name": "Transmissions",
+          "slug": "admin-transmissions"
+        },
+        {
+          "url": "app/vehicle-settings/body-types",
+          "name": "Body Types",
+          "slug": "admin-body-types"
+        },
+        {
+          "url": "app/vehicle-settings/extra-features",
+          "name": "Extra Features",
+          "slug": "admin-extra-features"
         }
       ]
     },
@@ -100,19 +133,19 @@
       ]
     },
     {
-      "name": "Users",
-      "icon": "menu-icon icon-base bx bx-user",
-      "slug": "app-users",
+      "name": "Access Control",
+      "icon": "menu-icon icon-base bx bx-shield-quarter",
+      "slug": "app-access-control",
       "submenu": [
         {
-          "url": "app/users/list",
-          "name": "List",
-          "slug": "app-users-list"
+          "url": "app/access-control/roles",
+          "name": "Roles",
+          "slug": "admin-roles-index"
         },
         {
-          "url": "app/users/add",
-          "name": "Add User",
-          "slug": "app-users-add"
+          "url": "app/access-control/users",
+          "name": "Users",
+          "slug": "admin-users-index"
         }
       ]
     }

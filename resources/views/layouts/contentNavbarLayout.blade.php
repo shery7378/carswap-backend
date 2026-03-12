@@ -1,3 +1,6 @@
+@php
+use App\Helpers\Helper;
+@endphp
 @isset($pageConfigs)
 {!! Helper::updatePageConfig($pageConfigs) !!}
 @endisset

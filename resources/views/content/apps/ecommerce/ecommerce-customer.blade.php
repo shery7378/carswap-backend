@@ -27,21 +27,27 @@
               </tr>
             </thead>
             <tbody class="table-border-bottom-0">
+              @foreach($customers as $customer)
               <tr>
                 <td>
                   <div class="d-flex align-items-center">
-                    <img src="{{ asset('assets/img/avatars/1.png')" alt="Avatar" class="rounded-circle me-3"
-                      width="40">
+                    @if($customer->profile_picture)
+                      <img src="{{ asset($customer->profile_picture) }}" alt="Avatar" class="rounded-circle me-3" width="40">
+                    @else
+                      <div class="avatar avatar-sm me-3">
+                        <span class="avatar-initial rounded-circle bg-label-primary">{{ strtoupper(substr($customer->first_name, 0, 1)) }}</span>
+                      </div>
+                    @endif
                     <div>
-                      <h6 class="mb-0">John Doe</h6>
-                      <small class="text-muted">Premium</small>
+                      <h6 class="mb-0">{{ $customer->first_name }} {{ $customer->last_name }}</h6>
+                      <small class="text-muted">Subscriber</small>
                     </div>
                   </div>
                 </td>
-                <td>john.doe@example.com</td>
-                <td>+1 234 567 8900</td>
-                <td>United States</td>
-                <td>Jan 10, 2024</td>
+                <td>{{ $customer->email }}</td>
+                <td>{{ $customer->phone ?? 'N/A' }}</td>
+                <td>{{ $customer->country ?? 'N/A' }}</td>
+                <td>{{ $customer->created_at->format('M d, Y') }}</td>
                 <td><span class="badge bg-label-success">Active</span></td>
                 <td>
                   <div class="dropdown">
@@ -49,40 +55,17 @@
                       <i class="bx bx-dots-vertical-rounded"></i>
                     </button>
                     <div class="dropdown-menu">
-                      <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-show me-2"></i> View</a>
-                      <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-2"></i> Edit</a>
+                      <a class="dropdown-item" href="{{ route('admin.users.edit', $customer->id) }}"><i class="bx bx-edit-alt me-2"></i> Edit</a>
+                      <form action="{{ route('admin.users.destroy', $customer->id) }}" method="POST" onsubmit="return confirm('Are you sure?')">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="dropdown-item text-danger"><i class="bx bx-trash me-2"></i> Delete</button>
+                      </form>
                     </div>
                   </div>
                 </td>
               </tr>
-              <tr>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <img src="{{ asset('assets/img/avatars/2.png')" alt="Avatar" class="rounded-circle me-3"
-                      width="40">
-                    <div>
-                      <h6 class="mb-0">Jane Smith</h6>
-                      <small class="text-muted">Standard</small>
-                    </div>
-                  </div>
-                </td>
-                <td>jane.smith@example.com</td>
-                <td>+1 234 567 8901</td>
-                <td>Canada</td>
-                <td>Jan 12, 2024</td>
-                <td><span class="badge bg-label-success">Active</span></td>
-                <td>
-                  <div class="dropdown">
-                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                      <i class="bx bx-dots-vertical-rounded"></i>
-                    </button>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-show me-2"></i> View</a>
-                      <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-2"></i> Edit</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
+              @endforeach
             </tbody>
           </table>
         </div>

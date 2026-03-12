@@ -24,10 +24,12 @@ class User extends Authenticatable
         'profile_picture',
         'has_whatsapp',
         'has_viber',
+        'is_email_visible',
         'facebook',
         'instagram',
         'youtube',
         'is_trader',
+        'role',
         'email_verified_at',
     ];
 
@@ -47,24 +49,7 @@ class User extends Authenticatable
         'password' => 'hashed',
         'has_whatsapp' => 'boolean',
         'has_viber' => 'boolean',
+        'is_email_visible' => 'boolean',
         'is_trader' => 'boolean',
     ];
-
-    /**
-     * Accessor: Full Name
-     */
-    // public function getFullNameAttribute()
-    // {
-    //     return trim($this->first_name . ' ' . $this->last_name);
-    // }
-
-    // /**
-    //  * Accessor: Profile Picture URL
-    //  */
-    // public function getProfilePictureUrlAttribute()
-    // {
-    //     return $this->profile_picture
-    //         ? asset('storage/' . $this->profile_picture)
-    //         : asset('images/default-avatar.png'); // default avatar
-    // }
 }
